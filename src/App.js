@@ -1,24 +1,87 @@
-import logo from './logo.svg';
-import './App.css';
+import "./index.css";
+import Header from "./components/Header";
+import Search from "./components/Search";
+import Main from "./components/Main";
+import { useState, useEffect } from "react";
+import { getUserByUsername } from "./apiRequests";
+import SignIn from "./components/SignIn";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Account from "./components/Account";
+import SignUp from "./components/SignUp";
+import { UserContext } from "./components/contexts/User";
+import Product from "./components/Product";
+import Sell from "./components/Sell";
+import Users from "./components/Users";
+import Basket from "./components/Basket";
 
 function App() {
+  const [searchValue, setSearchValue] = useState("");
+  const [category, setCategory] = useState("");
+  const [user, setUser] = useState(null);
+  const [basketLength, setBasketLenth] = useState(0);
+
+  useEffect(() => {
+    const userFromLocal = localStorage.getItem("user");
+    if (userFromLocal) {
+      getUserByUsername(userFromLocal).then((userFromApi) => {
+        setUser(userFromApi);
+      });
+    }
+    //
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserContext.Provider value={{ user, setUser }}>
+      <BrowserRouter>
+        <div className={`App__${user}`}>
+          <Header setUser={setUser} user={user} />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <Search
+                    setSearchValue={setSearchValue}
+                    setCategory={setCategory}
+                  />
+                  <Main
+                    searchValue={searchValue}
+                    category={category}
+                    setBasketLenth={setBasketLenth}
+                    basketLength={basketLength}
+                  />{" "}
+                </>
+              }
+            />
+            <Route path="/account/:username" element={<Account />} />
+
+            <Route
+              path="/sign-in"
+              element={<SignIn setUser={setUser} user={user} />}
+            />
+            <Route
+              path="/sign-up"
+              element={<SignUp setUser={setUser} user={user} />}
+            />
+            <Route
+              path="/product/:product_id"
+              element={
+                <Product
+                  setBasketLenth={setBasketLenth}
+                  basketLength={basketLength}
+                />
+              }
+            />
+            <Route path="/sell" element={<Sell />} />
+            <Route path="/users" element={<Users />} />
+            <Route
+              path="/:username/basket"
+              element={<Basket setBasketLenth={setBasketLenth} />}
+            />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </UserContext.Provider>
   );
 }
 

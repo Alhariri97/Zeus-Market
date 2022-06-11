@@ -1,13 +1,221 @@
-body {
+html, *{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0%;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Start Header styling */
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2vw ;
+  border-bottom: 1px solid black;
 }
+header h1{
+  width: 20%;
+  font-size: 4vw;
+}
+
+header nav{
+  width: 50vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+}
+nav a{
+  border-radius: 15px;
+  color: black;
+  background-color: gray;
+  padding: 10px;
+  text-decoration: none;
+}
+
+
+nav a:hover , nav p:hover {
+background-color: aquamarine;
+}
+nav p{
+  display: inline;
+  color: black;
+  cursor: pointer;
+  background-color: gray;
+  padding: 10px;
+  border-radius: 15px;
+}
+/* End Header styling */
+
+
+/* End of main */
+main .flex {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  align-content: center;
+  text-align: center;
+}
+.flex div{
+  width:43%;
+  border: 1px solid black;
+  margin: 10px ;
+  position: relative;
+  padding-bottom: 30px;
+  height: 40vh;
+  background-color: #9cc8ff;
+  box-shadow: 0px 0px 12px 1px black
+}
+.flex div button{
+position: absolute;
+bottom:0;
+height: 1.9rem;
+cursor: pointer;
+border-radius: 2%;
+}
+.flex div button:hover{
+  background-color: aquamarine;;
+}
+.flex div #buy-now{
+left:0;
+width: 40%;
+}
+.flex div #add-to-basket{
+right: 0;
+width: 60%;
+}
+.flex div img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
+#user div img {
+  width: 161px;
+}
+/* End of main */
+
+.users div img{
+width: 150px;
+}
+/*  */
+
+#pop-up{
+  position: fixed;
+  top: 0;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: centers;
+  z-index: 2;
+}
+#pop-up .inner-pop-up{
+width: 80%;
+margin: auto;
+padding: 10%;
+background-color: rgb(37, 37, 37);
+position: relative;
+font-size: large;
+font-weight: bold;
+color: white;
+
+}
+#pop-up .inner-pop-up span{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+}
+
+ #search form{
+  display: flex;
+  align-content: center;
+  align-items: center;  
+  /* justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  max-height:10vh;
+  min-height: 6vh; */
+}
+#search label, #search button, #search select ,#search input{
+height: 3.5vh;
+} 
+#search form{
+  width: 90vw;
+  margin: auto;
+  height: 30px;
+}
+#search input{
+  width: 26vw;
+}
+
+  @media (min-width:400px) {
+    #serach form {
+      margin: auto;
+    }
+    #search input, #search select, #search button{
+      max-width:45vw;
+      height: 25px;
+     } 
+     #search input{
+      width: 80vw;
+     }
+        } 
+@media (max-width:680px) {
+
+ 
+ }
+ 
+ @media (min-width:1200px) {
+   header nav {
+     width: 35vw;
+   }
+ }
+
+
+
+@media (min-width:600px) {
+  .flex div{
+    width: 29%;
+    height: 35vh;
+
+  }
+
+  }
+
+
+  @media (min-width:720px) {
+    .flex div{
+      width: 30%;
+      height: 35vh;
+    }
+  }
+
+  @media (min-width:800px) {
+    .flex div{
+      width: 20%;
+      height: 36vh;
+
+    }
+
+  }
+  @media (min-width:1200px) {
+    .flex div{
+      /* padding: 10px; */
+      width: 14%;
+      height: 38vh;
+    }
+    
+  }
+  /*  
+  */
+  a  h3, a p{
+    background-color: #9cc8ff;
+  }
