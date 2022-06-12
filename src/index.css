@@ -2,53 +2,35 @@ html, *{
   margin: 0;
   padding: 0%;
   box-sizing: border-box;
+  position: relative;
 }
 
 /* Start Header styling */
-header{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2vw ;
-  border-bottom: 1px solid black;
-}
-header h1{
-  width: 20%;
-  font-size: 4vw;
-}
 
-header nav{
-  width: 50vw;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: black;
-}
-nav a{
-  border-radius: 15px;
-  color: black;
-  background-color: gray;
-  padding: 10px;
-  text-decoration: none;
-}
-
-
-nav a:hover , nav p:hover {
-background-color: aquamarine;
-}
-nav p{
-  display: inline;
-  color: black;
+.branding{
   cursor: pointer;
-  background-color: gray;
-  padding: 10px;
-  border-radius: 15px;
 }
+
+nav a:hover  {
+background-color: gray;
+}
+
+.container-fluid{
+background-color: #f8f9fa;
+padding: 4px;
+padding-bottom:4px;
+position: absolute;
+z-index: 1;
+top: 0px;
+
+}
+
 /* End Header styling */
 
 
 /* End of main */
 main .flex {
+  padding-top: 40px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -90,16 +72,25 @@ width: 60%;
   width: 100%;
   height: auto;
 }
+@media (min-width:992px) {
+   
+.link{
 
-
-#user div img {
-  width: 161px;
+padding: 1vw;
 }
-/* End of main */
-
-.users div img{
-width: 150px;
+} 
+nav a{
+border-radius: 5px;
+text-decoration: none;
 }
+.branding{
+  /* font-weight: bolder; */
+  /* background-color: #9cc8ffs; */
+  /* color: gainsboro; */
+  /* font-size: 150% !important; */
+  margin-right: 3vw !important;
+}
+
 /*  */
 
 #pop-up{
@@ -133,89 +124,42 @@ color: white;
   color: white;
   cursor: pointer;
 }
+/*  */
 
- #search form{
-  display: flex;
-  align-content: center;
-  align-items: center;  
-  /* justify-content: space-evenly;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  max-height:10vh;
-  min-height: 6vh; */
-}
-#search label, #search button, #search select ,#search input{
-height: 3.5vh;
-} 
-#search form{
-  width: 90vw;
-  margin: auto;
-  height: 30px;
-}
-#search input{
-  width: 26vw;
-}
-
-  @media (min-width:400px) {
-    #serach form {
-      margin: auto;
-    }
-    #search input, #search select, #search button{
-      max-width:45vw;
-      height: 25px;
-     } 
-     #search input{
-      width: 80vw;
-     }
-        } 
-@media (max-width:680px) {
-
- 
- }
- 
- @media (min-width:1200px) {
-   header nav {
-     width: 35vw;
-   }
- }
-
-
-
-@media (min-width:600px) {
-  .flex div{
-    width: 29%;
-    height: 35vh;
-
+@media (max-width:500px) {
+ #card  {
+height: 50vh !important;
   }
-
-  }
-
-
-  @media (min-width:720px) {
-    .flex div{
-      width: 30%;
-      height: 35vh;
-    }
-  }
-
-  @media (min-width:800px) {
-    .flex div{
-      width: 20%;
-      height: 36vh;
-
-    }
-
-  }
-  @media (min-width:1200px) {
-    .flex div{
-      /* padding: 10px; */
-      width: 14%;
-      height: 38vh;
-    }
+   .card a button{
+    right: 30px;
+    z-index: 3;
+  
     
   }
-  /*  
-  */
-  a  h3, a p{
-    background-color: #9cc8ff;
+  .add-to{
+    /* left: 0 !important; */
   }
+.buy-now{
+  /* right: 0;
+  top: 0; */
+}
+
+}
+.container .row div .card a img{
+  height :30vh !important;
+  width: 100%;
+  height: 30px;
+}#cart-icon{
+
+  cursor: pointer;
+  /* position: absolute; */
+  /* margin-right: 55vw; */
+  margin-top: 10px;
+  margin-right: 50px;
+}
+#cart-icon:hover{
+  color: #0d6efd;
+}
+#basket{
+  margin-top: 40px;
+}

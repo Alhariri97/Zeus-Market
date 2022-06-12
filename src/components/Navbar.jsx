@@ -1,47 +1,35 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { getAllInBasket } from "../apiRequests";
+import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Collapse from "react-bootstrap/Collapse";
 
-const Navbar = ({ user, setUser }) => {
-  let navigate = useNavigate();
-
-  const [basket, setBasket] = useState();
-
-  if (user) {
-    // console.log(user.user.username);
-    getAllInBasket(user.user.username).then((data) => {
-      setBasket(data.items.length);
-    });
-  }
-  useEffect(() => {}, [basket]);
-
-  const logOut = () => {
-    localStorage.removeItem("user");
-    setUser(null);
-    navigate("/");
-  };
+function ShouldCollapse() {
+  const [open, setOpen] = useState(false);
 
   return (
-    <nav className="nav-bar">
-      <Link to="/">Home</Link>
-      {user ? (
-        <>
-          <Link to={`/account/${user.user.username}`}>
-            {user.user.username}'s Profile
-          </Link>
-          <Link to="/sell">Sell an item</Link>
-          <Link to="/users">Users</Link>
-          <Link to={`/${user.user.username}/basket`}>
-            Basket<span> {basket}</span>
-          </Link>
-        </>
-      ) : (
-        <Link to="/sign-in">Sign in</Link>
-      )}
-      {user ? <p onClick={logOut}> Log out </p> : <></>}
-    </nav>
+    <>
+      <Button
+        onClick={() => setOpen(!open)}
+        aria-controls="example-collapse-text"
+        aria-expanded={open}
+      >
+        click
+      </Button>
+      <Collapse in={open}>
+        <div id="example-collapse-text">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
+          terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
+          labore wes anderson cred nesciunt sapiente ea proident.
+        </div>
+      </Collapse>
+      <Button
+        onClick={() => setOpen(!open)}
+        aria-controls="example-collapse-text"
+        aria-expanded={open}
+      >
+        click
+      </Button>
+    </>
   );
-};
+}
 
-export default Navbar;
+export default ShouldCollapse;

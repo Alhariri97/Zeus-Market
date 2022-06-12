@@ -14,6 +14,16 @@ const getAllItems = (category, searchInput) => {
   //   // always executed
   // });
 };
+const getAllCategories = (username) => {
+  return axios
+    .get(`categories`)
+    .then(function ({ data }) {
+      return data;
+    })
+    .catch(function (error) {
+      return error;
+    });
+};
 
 const getUserByUsername = (username) => {
   return axios
@@ -161,8 +171,25 @@ const deleteItemFromBasket = (username, item_id) => {
   return axios.delete(`users/${username}/basket/${item_id}`);
 };
 
+const requestChangePhoto = (username, newImgUrl) => {
+  const obj = {
+    avatar_url: newImgUrl,
+    kudos_inc: 0,
+  };
+  return axios
+    .patch(`users/${username}`, obj)
+    .then(function ({ data }) {
+      console.log(data);
+      return data;
+    })
+    .catch(function (error) {
+      return error;
+    });
+};
+
 module.exports = {
   getAllItems,
+  getAllCategories,
   getUserByUsername,
   createUser,
   getProductById,
@@ -176,5 +203,6 @@ module.exports = {
   addToYourBasket,
   getAllInBasket,
   deleteItemFromBasket,
+  requestChangePhoto,
 };
 //

@@ -1,10 +1,14 @@
-import Navbar from "./Navbar";
+import MainNavBar from "./Burger";
 
-const Header = ({ user, setUser }) => {
+const Header = ({ user, setUser, setSearchValue, setCategory }) => {
   return (
     <header>
-      <h1>Zeus Store</h1>
-      <Navbar user={user} setUser={setUser} />
+      <MainNavBar
+        user={user}
+        setUser={setUser}
+        setSearchValue={setSearchValue}
+        setCategory={setCategory}
+      />
     </header>
   );
 };

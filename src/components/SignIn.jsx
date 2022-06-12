@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { getUserByUsername } from "../apiRequests";
 import { useNavigate } from "react-router-dom";
-
 const SignIn = ({ setUser, user }) => {
   const [userInput, setUserInput] = useState("");
   const [message, setMessage] = useState("");

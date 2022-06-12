@@ -1,6 +1,7 @@
 import "./index.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import Header from "./components/Header";
-import Search from "./components/Search";
 import Main from "./components/Main";
 import { useState, useEffect } from "react";
 import { getUserByUsername } from "./apiRequests";
@@ -19,7 +20,6 @@ function App() {
   const [category, setCategory] = useState("");
   const [user, setUser] = useState(null);
   const [basketLength, setBasketLenth] = useState(0);
-
   useEffect(() => {
     const userFromLocal = localStorage.getItem("user");
     if (userFromLocal) {
@@ -33,17 +33,22 @@ function App() {
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <BrowserRouter>
-        <div className={`App__${user}`}>
-          <Header setUser={setUser} user={user} />
+        <div id="App" className={`App__${user}`}>
+          <Header
+            setUser={setUser}
+            user={user}
+            setSearchValue={setSearchValue}
+            setCategory={setCategory}
+          />
           <Routes>
             <Route
               path="/"
               element={
                 <>
-                  <Search
+                  {/* <Search
                     setSearchValue={setSearchValue}
                     setCategory={setCategory}
-                  />
+                  /> */}
                   <Main
                     searchValue={searchValue}
                     category={category}

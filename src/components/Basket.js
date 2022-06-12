@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getAllInBasket, deleteItemFromBasket } from "../apiRequests";
+import ShouldCollapse from "./Navbar";
 
 function Basket({ setBasketLenth }) {
   const { username } = useParams();
@@ -16,18 +17,20 @@ function Basket({ setBasketLenth }) {
         .reduce((acc, cur) => acc + cur, 0);
       setTotla(all);
     });
-  }, [basket, username]);
+  }, [username, basket]);
   const deleteItme = (item_id) => {
     deleteItemFromBasket(username, item_id);
-    setBasketLenth(basket.length - 1);
-  };
+    console.log(basket);
 
+    setBasketLenth(basket.length - 1);
+    console.log(basket);
+  };
   return (
-    <div>
+    <div id="basket">
       {loading ? (
         <h3>Loading....</h3>
       ) : !basket.length ? (
-        <h2>your Basket is empty</h2>
+        <h2>Your cart is Empty</h2>
       ) : (
         <div>
           {basket.map((e) => {
@@ -39,16 +42,16 @@ function Basket({ setBasketLenth }) {
                 <p>£{e.price}</p>
                 <button id={e.item_id} onClick={(e) => deleteItme(e.target.id)}>
                   Delete
-                  {e.item_id}
                 </button>
               </div>
             );
           })}
           <br></br>
-          <h3>Totol : {total}</h3>
+          <h3>Totol : £{total}</h3>
           <button>Check Out Now</button>
         </div>
       )}
+      <ShouldCollapse />
     </div>
   );
 }

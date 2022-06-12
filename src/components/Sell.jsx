@@ -1,11 +1,27 @@
-import React, { useState } from "react";
-import { sellItem, createCategory } from "../apiRequests";
+import React, { useState, useEffect } from "react";
+import { sellItem } from "../apiRequests";
+import Category from "./Category";
+import CreateCategory from "./CreateCategory";
 import { useNavigate } from "react-router-dom";
 
 function Sell() {
   const [errorMessage, setErrorMessage] = useState(null);
   const [object, setObject] = useState({});
+  const [categoryChosed, setCategoryChosed] = useState("");
+  const [userCooseToAddNewCategory, setUserCooseToAddNewCategory] =
+    useState(false);
   let navigate = useNavigate();
+
+  useEffect(() => {
+    if (categoryChosed === "Add New Category +") {
+      setUserCooseToAddNewCategory(true);
+    } else {
+      setUserCooseToAddNewCategory(false);
+      const newObject = { ...object };
+      newObject["category_name"] = categoryChosed;
+      setObject(newObject);
+    }
+  }, [categoryChosed, setUserCooseToAddNewCategory, setObject, object]);
 
   const handleInputs = (userInput, inputField) => {
     const newObject = { ...object };
@@ -16,25 +32,12 @@ function Sell() {
   const handleButton = () => {
     const itemsNumber = Object.keys(object);
     if (itemsNumber.length === 5) {
-      sellItem(object).then((res) => {
-        if (res.msg) {
-          if (res.msg === "category not found") {
-            createNewCategory(object.category_name);
-          } else {
-            setErrorMessage(res.msg);
-          }
-        } else {
-          navigate("/");
-        }
+      sellItem(object).then(({ response }) => {
+        navigate("/");
       });
     } else {
       setErrorMessage("you need to fill all the inputs");
     }
-  };
-
-  const createNewCategory = (categoryName) => {
-    createCategory(categoryName);
-    handleButton();
   };
 
   return (
@@ -50,13 +53,16 @@ function Sell() {
           placeholder="Your item name"
         ></input>
       </div>
-      <label htmlFor="description">Item description:</label>
-      <input
-        onChange={(event) => handleInputs(event.target.value, event.target.id)}
-        id="description"
-        placeholder="Your item description"
-      ></input>{" "}
-      <div></div>
+      <div>
+        <label htmlFor="description">Item description:</label>
+        <input
+          onChange={(event) =>
+            handleInputs(event.target.value, event.target.id)
+          }
+          id="description"
+          placeholder="Your item description"
+        ></input>
+      </div>
       <div>
         <label
           onChange={(event) =>
@@ -85,16 +91,15 @@ function Sell() {
         ></input>{" "}
       </div>
       <div>
-        <label htmlFor="category_name">Item category name:</label>
-        <input
-          onChange={(event) =>
-            handleInputs(event.target.value, event.target.id)
-          }
-          id="category_name"
-          placeholder="Your item category name"
-        ></input>
+        <label htmlFor="category_name">Chose a category :</label>
+        <Category
+          setCategoryChosed={setCategoryChosed}
+          errorMessage={errorMessage}
+        />
+        {userCooseToAddNewCategory ? <CreateCategory /> : <></>}
       </div>
       <button onClick={handleButton}>Add item</button>
+
       {errorMessage ? <p>{errorMessage}</p> : <></>}
     </div>
   );
