@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getAllInBasket, getAllCategories } from "../apiRequests";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 //
 import Fade from "react-bootstrap/Collapse";
@@ -13,6 +11,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Dropdown from "react-bootstrap/Dropdown";
+import Badge from "react-bootstrap/Badge";
 
 function MainNavBar({ user, setUser, setSearchValue, setCategory }) {
   let navigate = useNavigate();
@@ -60,17 +59,17 @@ function MainNavBar({ user, setUser, setSearchValue, setCategory }) {
         <h1 onClick={() => navigate("/")} className="branding">
           Zeus
         </h1>
-        {basket ? (
+        {/* {basket ? (
           <h5
             id="cart-icon"
             onClick={() => navigate(`/${user.user.username}/basket`)}
           >
             <FontAwesomeIcon icon={faCartShopping} />
-            <span>{basket}</span>
+            <spam>{basket}</spam>
           </h5>
         ) : (
           <></>
-        )}
+        )} */}
         {/* <Navbar.Toggle aria-controls="navbarScroll" /> */}
         <button
           id="collapse-but"
@@ -125,7 +124,7 @@ function MainNavBar({ user, setUser, setSearchValue, setCategory }) {
                     className=" link mx-auto"
                     onClick={() => toCollsaps()}
                   >
-                    Basket
+                    Basket <Badge bg="primary">{basket}</Badge>
                   </Link>
                 </>
               ) : (

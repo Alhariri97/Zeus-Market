@@ -6,6 +6,7 @@ import { Col, Container, Row, Card } from "react-bootstrap";
 import BuyButton from "./BuyButton";
 import AddToBasket from "./AddToBasket";
 import BootPopUP from "./BootPopUP";
+import Message from "./Message";
 
 const Main = ({ searchValue, category, setBasketLenth, basketLength }) => {
   const { user } = useContext(UserContext);
@@ -13,6 +14,8 @@ const Main = ({ searchValue, category, setBasketLenth, basketLength }) => {
   const [loading, setLoading] = useState(true);
   const [, setError] = useState(false);
   const [Logedin, setLogedin] = useState(false);
+  const [show, setShow] = useState(false);
+  const [textMessage, setTextMessage] = useState("");
 
   useEffect(() => {
     setLoading(true);
@@ -44,6 +47,11 @@ const Main = ({ searchValue, category, setBasketLenth, basketLength }) => {
         headerText={"Log in required"}
         bodayText="You need to log in first"
       />
+      {show ? (
+        <Message setShow={setShow} show={show} textMessage={textMessage} />
+      ) : (
+        <></>
+      )}
       {loading ? (
         <h4>Loading...</h4>
       ) : !itemsArray.length ? (
@@ -97,6 +105,8 @@ const Main = ({ searchValue, category, setBasketLenth, basketLength }) => {
                       setLogedin={setLogedin}
                       setBasketLenth={setBasketLenth}
                       basketLength={basketLength}
+                      setTextMessage={setTextMessage}
+                      setShow={setShow}
                     />
                   </Card.Body>
                 </Card>

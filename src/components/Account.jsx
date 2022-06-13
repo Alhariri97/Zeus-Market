@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-
+import Image from "react-bootstrap/Image";
 import {
   getAllOrdered,
   getUserByUsername,
@@ -60,12 +60,12 @@ function Account() {
         <p>loading...</p>
       ) : (
         <div>
-          <img
+          <Image
             id="personal-img"
             alt={user.username}
             src={user.avatar_url}
             className="rounded"
-          ></img>
+          ></Image>
           <h3>{user.username}</h3>
           <button onClick={clickedToChange}>Change Photo</button>
 

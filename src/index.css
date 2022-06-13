@@ -198,7 +198,7 @@ width: 100%;
   padding: 5px;
   border-radius: 50px;
 }
-#sell, #basket,#form-container{
+#sell, #basket,#form-container,#user{
   margin-top: 40px;
 }
 #form-container{
@@ -223,4 +223,11 @@ position: relative;
 #add-new-category .center{
   width: 70%;
 
+}
+.row .col-12{
+  flex: 0 0 auto;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 53px;
 }

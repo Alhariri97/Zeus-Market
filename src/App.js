@@ -20,6 +20,7 @@ function App() {
   const [category, setCategory] = useState("");
   const [user, setUser] = useState(null);
   const [basketLength, setBasketLenth] = useState(0);
+
   useEffect(() => {
     const userFromLocal = localStorage.getItem("user");
     if (userFromLocal) {

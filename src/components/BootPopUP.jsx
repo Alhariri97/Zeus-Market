@@ -3,7 +3,6 @@ import Modal from "react-bootstrap/Modal";
 import React from "react";
 
 function BootPopUP(props) {
-  console.log(props);
   return (
     <Modal
       {...props}
