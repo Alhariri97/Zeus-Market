@@ -73,13 +73,7 @@ width: 60%;
   width: 100%;
   height: auto;
 }
-@media (min-width:992px) {
-   
-.link{
 
-/* padding: 1vw; */
-}
-} 
 nav a{
 border-radius: 5px;
 text-decoration: none;
@@ -161,16 +155,11 @@ height: 52vh !important;
   width: 66px;
     margin: auto;
 }
-#container{
-}
+
 #colaps{
 width: 100%;
-/* display: flex; */
-/* background-color: #0d6efd; */
 }
 @media (min-width:992px) {
-  #container{
-  }
   #colaps{
   width: 100%;
   display: flex;
