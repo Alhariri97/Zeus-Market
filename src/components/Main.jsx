@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
 import { getAllItems } from "../apiRequests";
 import { UserContext } from "./contexts/User";
-import PopUp from "./PopUp";
 import { Col, Container, Row, Card } from "react-bootstrap";
 import BuyButton from "./BuyButton";
 import AddToBasket from "./AddToBasket";
+import BootPopUP from "./BootPopUP";
 
 const Main = ({ searchValue, category, setBasketLenth, basketLength }) => {
   const { user } = useContext(UserContext);
@@ -38,7 +38,12 @@ const Main = ({ searchValue, category, setBasketLenth, basketLength }) => {
   }
   return (
     <Container style={{ margin: "5em auto " }}>
-      {Logedin ? PopUp(setLogedin, "You need to log in!") : <></>}
+      <BootPopUP
+        show={Logedin}
+        onHide={setLogedin}
+        headerText={"Log in required"}
+        bodayText="You need to log in first"
+      />
       {loading ? (
         <h4>Loading...</h4>
       ) : !itemsArray.length ? (

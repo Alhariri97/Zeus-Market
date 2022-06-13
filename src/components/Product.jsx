@@ -3,8 +3,8 @@ import { UserContext } from "./contexts/User";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../apiRequests";
 import BuyButton from "./BuyButton";
+import BootPopUP from "./BootPopUP";
 
-import PopUp from "./PopUp";
 import AddToBasket from "./AddToBasket";
 import DeleteItem from "./DeleteItem";
 
@@ -26,7 +26,17 @@ const Product = ({ setBasketLenth, basketLength }) => {
 
   return (
     <section>
-      {Logedin ? PopUp(setLogedin, "You need to log in!") : <></>}
+      {Logedin ? (
+        <BootPopUP
+          show={Logedin}
+          onHide={setLogedin}
+          headerText={"Log in required"}
+          bodayText="You need to log in first"
+        />
+      ) : (
+        <></>
+      )}
+
       <h3>{product.item.item_name}</h3>
       <img src={product.item.img_url} alt={product.item.item_name}></img>
       <p>{product.item.category_name}</p>
