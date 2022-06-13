@@ -3,7 +3,7 @@ import { sellItem } from "../apiRequests";
 import Category from "./Category";
 import CreateCategory from "./CreateCategory";
 import { useNavigate } from "react-router-dom";
-
+import SellItem from "./SellItem";
 function Sell() {
   const [errorMessage, setErrorMessage] = useState(null);
   const [object, setObject] = useState({});
@@ -21,7 +21,7 @@ function Sell() {
       newObject["category_name"] = categoryChosed;
       setObject(newObject);
     }
-  }, [categoryChosed, setUserCooseToAddNewCategory, setObject, object]);
+  }, [categoryChosed]);
 
   const handleInputs = (userInput, inputField) => {
     const newObject = { ...object };
@@ -41,66 +41,8 @@ function Sell() {
   };
 
   return (
-    <div>
-      <h3>List an item </h3>
-      <div>
-        <label htmlFor="item_name">Item name:</label>
-        <input
-          onChange={(event) =>
-            handleInputs(event.target.value, event.target.id)
-          }
-          id="item_name"
-          placeholder="Your item name"
-        ></input>
-      </div>
-      <div>
-        <label htmlFor="description">Item description:</label>
-        <input
-          onChange={(event) =>
-            handleInputs(event.target.value, event.target.id)
-          }
-          id="description"
-          placeholder="Your item description"
-        ></input>
-      </div>
-      <div>
-        <label
-          onChange={(event) =>
-            handleInputs(event.target.value, event.target.id)
-          }
-          htmlFor="img_url"
-        >
-          Item image url:
-        </label>
-        <input
-          onChange={(event) =>
-            handleInputs(event.target.value, event.target.id)
-          }
-          id="img_url"
-          placeholder="Your item image url"
-        ></input>{" "}
-      </div>
-      <div>
-        <label htmlFor="price">Item price:</label>
-        <input
-          onChange={(event) =>
-            handleInputs(event.target.value, event.target.id)
-          }
-          id="price"
-          placeholder="Your item price"
-        ></input>{" "}
-      </div>
-      <div>
-        <label htmlFor="category_name">Chose a category :</label>
-        <Category
-          setCategoryChosed={setCategoryChosed}
-          errorMessage={errorMessage}
-        />
-        {userCooseToAddNewCategory ? <CreateCategory /> : <></>}
-      </div>
-      <button onClick={handleButton}>Add item</button>
-
-      {errorMessage ? <p>{errorMessage}</p> : <></>}
+    <div id="sell">
+      <SellItem />
     </div>
   );
 }

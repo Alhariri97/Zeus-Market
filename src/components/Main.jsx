@@ -79,7 +79,10 @@ const Main = ({ searchValue, category, setBasketLenth, basketLength }) => {
 
                   <Card.Body>
                     <h5>{item.item_name}</h5>
-                    <p>£{item.price}</p>
+                    <p className="para-flex">
+                      <span className="category">{item.category_name}</span>
+                      <span className="price">£{item.price}</span>
+                    </p>
                     <BuyButton
                       product_id={item.item_id}
                       setLogedin={setLogedin}

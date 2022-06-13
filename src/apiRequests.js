@@ -79,6 +79,7 @@ const sellItem = (itemObject) => {
   return axios
     .post(`items`, itemObject)
     .then(function ({ data }) {
+      console.log(data);
       return data;
     })
     .catch(function (error) {
