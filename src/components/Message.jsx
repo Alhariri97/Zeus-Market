@@ -5,18 +5,10 @@ import Row from "react-bootstrap/Row";
 import Toast from "react-bootstrap/Toast";
 
 function Message({ setShow, show, textMessage }) {
-  //   const [show, setShow] = useState(true);
-
   return (
     <Row style={{}}>
       <Col xs={12}>
-        <Toast
-          //   bg="success"
-          onClose={() => setShow(false)}
-          show={show}
-          delay={3000}
-          autohide
-        >
+        <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
           <Toast.Header>
             <strong className="me-auto">Zeus</strong>
             <small>just now</small>

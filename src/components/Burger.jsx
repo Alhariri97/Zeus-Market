@@ -74,7 +74,6 @@ function MainNavBar({ user, setUser, setSearchValue, setCategory }) {
             <Nav
               className="me-auto my-2 my-lg-0 mb-4 "
               style={{ maxHeight: "170px" }}
-              // navbarScroll
             >
               <Link
                 to="/"
