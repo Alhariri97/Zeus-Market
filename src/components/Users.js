@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllUsers, giveKudo } from "../apiRequests";
+import Loading from "./Loading";
 
 function Users() {
   const [allUsers, setAllUsers] = useState([]);
@@ -19,9 +20,9 @@ function Users() {
     };
     giveKudo(obj, userName);
   };
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading />;
   return (
-    <div className="users flex">
+    <div className="all-ordered">
       {allUsers.map((user) => {
         return (
           <div key={user.username}>

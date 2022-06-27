@@ -59,7 +59,7 @@ function Account() {
       {loading ? (
         <p>loading...</p>
       ) : (
-        <div>
+        <div className="profile">
           <Image
             id="personal-img"
             alt={user.username}
@@ -103,11 +103,11 @@ function Account() {
       )}
       <div>
         {ordered ? (
-          <div>
+          <div className="all-ordered">
             {ordered.map((e) => {
               return (
                 <div key={e.item_id}>
-                  <h3>{e.item_name}</h3>
+                  <h6>{e.item_name}</h6>
                   <img alt={`${e.item_name}`} src={e.img_url}></img>
                   <p>{e.description}</p>
                   <p>

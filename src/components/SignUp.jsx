@@ -1,7 +1,7 @@
 import React from "react";
-import { useState, useContext } from "react"
-import {createUser} from "../apiRequests"
-import { UserContext } from "./contexts/User"
+import { useState, useContext } from "react";
+import { createUser } from "../apiRequests";
+import { UserContext } from "./contexts/User";
 import { useNavigate } from "react-router-dom";
 // Consistency
 
@@ -15,27 +15,32 @@ function SignUp() {
 
   const submitHandle = (event) => {
     event.preventDefault();
-    createUser(usernameInput, urlInput)
-    .then((newUser) => {
-      if(newUser.msg) {
-        setErrorMessage(newUser.msg)
-      }else {
+    createUser(usernameInput, urlInput).then((newUser) => {
+      if (newUser.msg) {
+        setErrorMessage(newUser.msg);
+      } else {
         setUser(newUser);
         navigate("/");
       }
-    })
+    });
   };
 
   return (
-    <div>
+    <div className="sign-up">
       <form onSubmit={submitHandle}>
         <label htmlFor="username">Username:</label>
-        <input onChange={(event) => setUsernameInput(event.target.value)} id="username"></input>
+        <input
+          onChange={(event) => setUsernameInput(event.target.value)}
+          id="username"
+        ></input>
         <label htmlFor="img-url">Image Url :</label>
-        <input onChange={(event) => setUrlInput(event.target.value)} id="img-rul"></input>
+        <input
+          onChange={(event) => setUrlInput(event.target.value)}
+          id="img-rul"
+        ></input>
         <button type="submit">Submit</button>
       </form>
-      {errorMessage?<p>{errorMessage}</p>:<></>}
+      {errorMessage ? <p>{errorMessage}</p> : <></>}
     </div>
   );
 }

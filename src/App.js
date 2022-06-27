@@ -45,18 +45,12 @@ function App() {
             <Route
               path="/"
               element={
-                <>
-                  {/* <Search
-                    setSearchValue={setSearchValue}
-                    setCategory={setCategory}
-                  /> */}
-                  <Main
-                    searchValue={searchValue}
-                    category={category}
-                    setBasketLenth={setBasketLenth}
-                    basketLength={basketLength}
-                  />{" "}
-                </>
+                <Main
+                  searchValue={searchValue}
+                  category={category}
+                  setBasketLenth={setBasketLenth}
+                  basketLength={basketLength}
+                />
               }
             />
             <Route path="/account/:username" element={<Account />} />

@@ -7,6 +7,7 @@ import BuyButton from "./BuyButton";
 import AddToBasket from "./AddToBasket";
 import BootPopUP from "./BootPopUP";
 import Message from "./Message";
+import Loading from "./Loading";
 
 const Main = ({ searchValue, category, setBasketLenth, basketLength }) => {
   const { user } = useContext(UserContext);
@@ -37,7 +38,7 @@ const Main = ({ searchValue, category, setBasketLenth, basketLength }) => {
   }, [searchValue, category, user]);
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <Loading />;
   }
   return (
     <Container style={{ margin: "5em auto " }}>
@@ -53,7 +54,7 @@ const Main = ({ searchValue, category, setBasketLenth, basketLength }) => {
         <></>
       )}
       {loading ? (
-        <h4>Loading...</h4>
+        <Loading />
       ) : !itemsArray.length ? (
         <h3>No items, Try other key words to seaerch... </h3>
       ) : (

@@ -1,7 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-// import './index.css';
-import "./css/landing.css";
 import App from "./App";
 import ThemeProvider from "react-bootstrap/ThemeProvider";
 

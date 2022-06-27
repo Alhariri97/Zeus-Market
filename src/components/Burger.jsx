@@ -11,7 +11,6 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Dropdown from "react-bootstrap/Dropdown";
-import Badge from "react-bootstrap/Badge";
 
 function MainNavBar({ user, setUser, setSearchValue, setCategory }) {
   let navigate = useNavigate();
@@ -59,18 +58,7 @@ function MainNavBar({ user, setUser, setSearchValue, setCategory }) {
         <h1 onClick={() => navigate("/")} className="branding">
           Zeus
         </h1>
-        {/* {basket ? (
-          <h5
-            id="cart-icon"
-            onClick={() => navigate(`/${user.user.username}/basket`)}
-          >
-            <FontAwesomeIcon icon={faCartShopping} />
-            <spam>{basket}</spam>
-          </h5>
-        ) : (
-          <></>
-        )} */}
-        {/* <Navbar.Toggle aria-controls="navbarScroll" /> */}
+
         <button
           id="collapse-but"
           onClick={() => {
@@ -79,7 +67,7 @@ function MainNavBar({ user, setUser, setSearchValue, setCategory }) {
           aria-controls="colaps"
           aria-expanded={open}
         >
-          press{" "}
+          Minue{" "}
         </button>
         <Fade in={open}>
           <div id="colaps">
@@ -123,8 +111,9 @@ function MainNavBar({ user, setUser, setSearchValue, setCategory }) {
                     to={`/${user.user.username}/basket`}
                     className=" link mx-auto"
                     onClick={() => toCollsaps()}
+                    style={{ display: "flex" }}
                   >
-                    Basket <Badge bg="primary">{basket}</Badge>
+                    Basket <span className="span-badge">{basket}</span>
                   </Link>
                 </>
               ) : (

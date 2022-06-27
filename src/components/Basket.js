@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getAllInBasket, deleteItemFromBasket } from "../apiRequests";
+import Loading from "./Loading";
 
 function Basket({ setBasketLenth }) {
   const { username } = useParams();
@@ -25,11 +26,11 @@ function Basket({ setBasketLenth }) {
   return (
     <div id="basket">
       {loading ? (
-        <h3>Loading....</h3>
+        <Loading />
       ) : !basket.length ? (
         <h2>Your cart is Empty</h2>
       ) : (
-        <div>
+        <div className="all-ordered">
           {basket.map((e) => {
             return (
               <div key={e.item_id}>
