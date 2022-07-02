@@ -30,24 +30,42 @@ function Basket({ setBasketLenth }) {
       ) : !basket.length ? (
         <h2>Your cart is Empty</h2>
       ) : (
-        <div className="all-ordered">
-          {basket.map((e) => {
-            return (
-              <div key={e.item_id}>
-                <img src={e.img_url} alt={e.name}></img>
-                <h3>{e.name}</h3>
-                <p>{e.description}</p>
-                <p>£{e.price}</p>
-                <button id={e.item_id} onClick={(e) => deleteItme(e.target.id)}>
-                  Delete
-                </button>
-              </div>
-            );
-          })}
-          <br></br>
-          <h3>Totol : £{total}</h3>
-          <button>Check Out Now</button>
-        </div>
+        <>
+          <div className="all-ordered">
+            {basket.map((e) => {
+              return (
+                <div key={e.item_id}>
+                  <img src={e.img_url} alt={e.name}></img>
+                  <h3>{e.name}</h3>
+                  <p>{e.description}</p>
+                  <p>£{e.price}</p>
+                  <button
+                    id={e.item_id}
+                    onClick={(e) => deleteItme(e.target.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              );
+            })}
+            <br></br>
+          </div>
+
+          <div
+            style={{
+              // height: "10vh",
+              display: "flex",
+              paddingTop: "45px",
+              alignItems: "center",
+              alignContent: "center",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
+            <h3>Totol : £{total}</h3>
+            <button>Check Out Now</button>
+          </div>
+        </>
       )}
     </div>
   );
